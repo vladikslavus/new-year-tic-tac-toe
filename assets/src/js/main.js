@@ -251,15 +251,15 @@ var area = document.getElementById("area"),
   move_permit = true;
 
 area.addEventListener("click", function (event) {
-  if (event.target.tagName == "IMG") return;
+  if (event.target.tagName === "IMG") return;
   var box = event.target;
 
-  if (box.innerHTML == "") {
-    if (move_permit == true) {
-      box.innerHTML = '<img src="/img/santa.svg" alt="">';
-      move_permit = false;
-      check();
-    }
+  if (box.innerHTML === "" && move_permit === true) {
+    box.innerHTML = '<img src="/img/santa.svg" alt="">';
+    move_permit = false;
+    check();
+
+    if (game_over === true) return;
 
     if (return_empty_boxes().length > 0 && game_over === false) {
       // Создаём объект promise
@@ -280,7 +280,9 @@ area.addEventListener("click", function (event) {
 
 overlay.addEventListener("click", function (event) {
   if (crosses_win === false && show_toast === false) {
-    document.querySelectorAll(".box img").forEach(img => { img.style.filter = "invert(0)"; });
+    document.querySelectorAll(".box img").forEach((img) => {
+      img.style.filter = "invert(0)";
+    });
     overlay.style.display = "none";
     toast.style.display = "none";
     clear_area();
@@ -295,19 +297,19 @@ overlay.addEventListener("click", function (event) {
 });
 toast.addEventListener("click", function (event) {
   if (crosses_win === false && show_toast === false) {
-    document.querySelectorAll(".box img").forEach(img => { img.style.filter = "invert(0)"; });
+    document.querySelectorAll(".box img").forEach((img) => {
+      img.style.filter = "invert(0)";
+    });
     toast.style.display = "none";
     overlay.style.display = "none";
     clear_area();
   }
   if (crosses_win === true && show_toast === true) {
-    setTimeout(() => {
       toast.style.display = "none";
       overlay.style.display = "none";
       clear_area();
       crosses_win = false;
       show_toast = false;
-    }, 1000);
   }
 });
 
@@ -317,29 +319,38 @@ function fill() {
     // то закрываем линию, прерываем выполнение функции и выигрываем партию
     for (var i = 0; i < lines.length; i++) {
       if (
-        boxes[lines[i][0]].innerHTML === '<img src="/img/christmas-tree.svg" alt="">' &&
-        boxes[lines[i][1]].innerHTML === '<img src="/img/christmas-tree.svg" alt="">' &&
+        boxes[lines[i][0]].innerHTML ===
+          '<img src="/img/christmas-tree.svg" alt="">' &&
+        boxes[lines[i][1]].innerHTML ===
+          '<img src="/img/christmas-tree.svg" alt="">' &&
         boxes[lines[i][2]].innerHTML === ""
       ) {
-        boxes[lines[i][2]].innerHTML = '<img src="/img/christmas-tree.svg" alt="">';
+        boxes[lines[i][2]].innerHTML =
+          '<img src="/img/christmas-tree.svg" alt="">';
         move_permit = true;
         return;
       }
       if (
-        boxes[lines[i][1]].innerHTML === '<img src="/img/christmas-tree.svg" alt="">' &&
-        boxes[lines[i][2]].innerHTML === '<img src="/img/christmas-tree.svg" alt="">' &&
+        boxes[lines[i][1]].innerHTML ===
+          '<img src="/img/christmas-tree.svg" alt="">' &&
+        boxes[lines[i][2]].innerHTML ===
+          '<img src="/img/christmas-tree.svg" alt="">' &&
         boxes[lines[i][0]].innerHTML === ""
       ) {
-        boxes[lines[i][0]].innerHTML = '<img src="/img/christmas-tree.svg" alt="">';
+        boxes[lines[i][0]].innerHTML =
+          '<img src="/img/christmas-tree.svg" alt="">';
         move_permit = true;
         return;
       }
       if (
-        boxes[lines[i][0]].innerHTML === '<img src="/img/christmas-tree.svg" alt="">' &&
-        boxes[lines[i][2]].innerHTML === '<img src="/img/christmas-tree.svg" alt="">' &&
+        boxes[lines[i][0]].innerHTML ===
+          '<img src="/img/christmas-tree.svg" alt="">' &&
+        boxes[lines[i][2]].innerHTML ===
+          '<img src="/img/christmas-tree.svg" alt="">' &&
         boxes[lines[i][1]].innerHTML === ""
       ) {
-        boxes[lines[i][1]].innerHTML = '<img src="/img/christmas-tree.svg" alt="">';
+        boxes[lines[i][1]].innerHTML =
+          '<img src="/img/christmas-tree.svg" alt="">';
         move_permit = true;
         return;
       }
@@ -352,7 +363,8 @@ function fill() {
         boxes[lines[i][1]].innerHTML === '<img src="/img/santa.svg" alt="">' &&
         boxes[lines[i][2]].innerHTML === ""
       ) {
-        boxes[lines[i][2]].innerHTML = '<img src="/img/christmas-tree.svg" alt="">';
+        boxes[lines[i][2]].innerHTML =
+          '<img src="/img/christmas-tree.svg" alt="">';
         move_permit = true;
         return;
       }
@@ -361,7 +373,8 @@ function fill() {
         boxes[lines[i][2]].innerHTML === '<img src="/img/santa.svg" alt="">' &&
         boxes[lines[i][0]].innerHTML === ""
       ) {
-        boxes[lines[i][0]].innerHTML = '<img src="/img/christmas-tree.svg" alt="">';
+        boxes[lines[i][0]].innerHTML =
+          '<img src="/img/christmas-tree.svg" alt="">';
         move_permit = true;
         return;
       }
@@ -370,7 +383,8 @@ function fill() {
         boxes[lines[i][2]].innerHTML === '<img src="/img/santa.svg" alt="">' &&
         boxes[lines[i][1]].innerHTML === ""
       ) {
-        boxes[lines[i][1]].innerHTML = '<img src="/img/christmas-tree.svg" alt="">';
+        boxes[lines[i][1]].innerHTML =
+          '<img src="/img/christmas-tree.svg" alt="">';
         move_permit = true;
         return;
       }
@@ -430,15 +444,18 @@ function check() {
       }, 1000);
       return;
     } else if (
-      boxes[lines[i][0]].innerHTML === '<img src="/img/christmas-tree.svg" alt="">' &&
-      boxes[lines[i][1]].innerHTML === '<img src="/img/christmas-tree.svg" alt="">' &&
-      boxes[lines[i][2]].innerHTML === '<img src="/img/christmas-tree.svg" alt="">'
+      boxes[lines[i][0]].innerHTML ===
+        '<img src="/img/christmas-tree.svg" alt="">' &&
+      boxes[lines[i][1]].innerHTML ===
+        '<img src="/img/christmas-tree.svg" alt="">' &&
+      boxes[lines[i][2]].innerHTML ===
+        '<img src="/img/christmas-tree.svg" alt="">'
     ) {
       // Победили нолики!
       boxes[lines[i][0]].style.background =
-      boxes[lines[i][1]].style.background =
-      boxes[lines[i][2]].style.background =
-      "#c0fb9d";
+        boxes[lines[i][1]].style.background =
+        boxes[lines[i][2]].style.background =
+          "#c0fb9d";
 
       // boxes[lines[i][0]].querySelector("img").style.filter = "invert(1)";
       // boxes[lines[i][1]].querySelector("img").style.filter = "invert(1)";
