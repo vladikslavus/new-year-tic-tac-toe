@@ -317,29 +317,29 @@ function fill() {
     // то закрываем линию, прерываем выполнение функции и выигрываем партию
     for (var i = 0; i < lines.length; i++) {
       if (
-        boxes[lines[i][0]].innerHTML === '<img src="/img/evil.svg" alt="">' &&
-        boxes[lines[i][1]].innerHTML === '<img src="/img/evil.svg" alt="">' &&
+        boxes[lines[i][0]].innerHTML === '<img src="/img/christmas-tree.svg" alt="">' &&
+        boxes[lines[i][1]].innerHTML === '<img src="/img/christmas-tree.svg" alt="">' &&
         boxes[lines[i][2]].innerHTML === ""
       ) {
-        boxes[lines[i][2]].innerHTML = '<img src="/img/evil.svg" alt="">';
+        boxes[lines[i][2]].innerHTML = '<img src="/img/christmas-tree.svg" alt="">';
         move_permit = true;
         return;
       }
       if (
-        boxes[lines[i][1]].innerHTML === '<img src="/img/evil.svg" alt="">' &&
-        boxes[lines[i][2]].innerHTML === '<img src="/img/evil.svg" alt="">' &&
+        boxes[lines[i][1]].innerHTML === '<img src="/img/christmas-tree.svg" alt="">' &&
+        boxes[lines[i][2]].innerHTML === '<img src="/img/christmas-tree.svg" alt="">' &&
         boxes[lines[i][0]].innerHTML === ""
       ) {
-        boxes[lines[i][0]].innerHTML = '<img src="/img/evil.svg" alt="">';
+        boxes[lines[i][0]].innerHTML = '<img src="/img/christmas-tree.svg" alt="">';
         move_permit = true;
         return;
       }
       if (
-        boxes[lines[i][0]].innerHTML === '<img src="/img/evil.svg" alt="">' &&
-        boxes[lines[i][2]].innerHTML === '<img src="/img/evil.svg" alt="">' &&
+        boxes[lines[i][0]].innerHTML === '<img src="/img/christmas-tree.svg" alt="">' &&
+        boxes[lines[i][2]].innerHTML === '<img src="/img/christmas-tree.svg" alt="">' &&
         boxes[lines[i][1]].innerHTML === ""
       ) {
-        boxes[lines[i][1]].innerHTML = '<img src="/img/evil.svg" alt="">';
+        boxes[lines[i][1]].innerHTML = '<img src="/img/christmas-tree.svg" alt="">';
         move_permit = true;
         return;
       }
@@ -352,7 +352,7 @@ function fill() {
         boxes[lines[i][1]].innerHTML === '<img src="/img/santa.svg" alt="">' &&
         boxes[lines[i][2]].innerHTML === ""
       ) {
-        boxes[lines[i][2]].innerHTML = '<img src="/img/evil.svg" alt="">';
+        boxes[lines[i][2]].innerHTML = '<img src="/img/christmas-tree.svg" alt="">';
         move_permit = true;
         return;
       }
@@ -361,7 +361,7 @@ function fill() {
         boxes[lines[i][2]].innerHTML === '<img src="/img/santa.svg" alt="">' &&
         boxes[lines[i][0]].innerHTML === ""
       ) {
-        boxes[lines[i][0]].innerHTML = '<img src="/img/evil.svg" alt="">';
+        boxes[lines[i][0]].innerHTML = '<img src="/img/christmas-tree.svg" alt="">';
         move_permit = true;
         return;
       }
@@ -370,14 +370,14 @@ function fill() {
         boxes[lines[i][2]].innerHTML === '<img src="/img/santa.svg" alt="">' &&
         boxes[lines[i][1]].innerHTML === ""
       ) {
-        boxes[lines[i][1]].innerHTML = '<img src="/img/evil.svg" alt="">';
+        boxes[lines[i][1]].innerHTML = '<img src="/img/christmas-tree.svg" alt="">';
         move_permit = true;
         return;
       }
     }
     var empty_boxes = return_empty_boxes();
     var rand = empty_boxes[Math.floor(Math.random() * empty_boxes.length)];
-    boxes[rand].innerHTML = '<img src="/img/evil.svg" alt="">';
+    boxes[rand].innerHTML = '<img src="/img/christmas-tree.svg" alt="">';
     // boxes[rand].style.color = 'brown';
     move_permit = true;
     return;
@@ -412,7 +412,7 @@ function check() {
       boxes[lines[i][0]].style.background =
         boxes[lines[i][1]].style.background =
         boxes[lines[i][2]].style.background =
-          "#f00";
+          "#ff7675";
       overlay.style.display = "block";
       drawn_game = zeros_win = false;
       victories.innerText = ++count_victories;
@@ -430,19 +430,19 @@ function check() {
       }, 1000);
       return;
     } else if (
-      boxes[lines[i][0]].innerHTML === '<img src="/img/evil.svg" alt="">' &&
-      boxes[lines[i][1]].innerHTML === '<img src="/img/evil.svg" alt="">' &&
-      boxes[lines[i][2]].innerHTML === '<img src="/img/evil.svg" alt="">'
+      boxes[lines[i][0]].innerHTML === '<img src="/img/christmas-tree.svg" alt="">' &&
+      boxes[lines[i][1]].innerHTML === '<img src="/img/christmas-tree.svg" alt="">' &&
+      boxes[lines[i][2]].innerHTML === '<img src="/img/christmas-tree.svg" alt="">'
     ) {
       // Победили нолики!
       boxes[lines[i][0]].style.background =
       boxes[lines[i][1]].style.background =
       boxes[lines[i][2]].style.background =
-      "#000";
+      "#c0fb9d";
 
-      boxes[lines[i][0]].querySelector("img").style.filter = "invert(1)";
-      boxes[lines[i][1]].querySelector("img").style.filter = "invert(1)";
-      boxes[lines[i][2]].querySelector("img").style.filter = "invert(1)";
+      // boxes[lines[i][0]].querySelector("img").style.filter = "invert(1)";
+      // boxes[lines[i][1]].querySelector("img").style.filter = "invert(1)";
+      // boxes[lines[i][2]].querySelector("img").style.filter = "invert(1)";
 
       overlay.style.display = "block";
       drawn_game = crosses_win = false;

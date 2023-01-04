@@ -1,0 +1,18 @@
+$text_color: #0e1318;
+$main_headline: #2e83a2;
+$victories_color: #f00;
+$defeats_color: #5c913b;
+
+html {
+  font-family: "Open Sans", "Calibri", "Arial", sans-serif;
+  font-size: 100%;
+}
+
+@font-face {
+  font-family: 'Snow for Santa';
+  src: url(/fonts/snowforsantacyrillic.otf);
+}
+@font-face {
+  font-family: 'Open Sans';
+  src: url(/fonts/Open_Sans/OpenSans-Regular.ttf);
+}
