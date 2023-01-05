@@ -294,6 +294,8 @@ overlay.addEventListener("click", function (event) {
     crosses_win = false;
     show_toast = false;
   }
+  victories.classList.remove('score-animate');
+  defeats.classList.remove('score-animate');
 });
 toast.addEventListener("click", function (event) {
   if (crosses_win === false && show_toast === false) {
@@ -311,6 +313,8 @@ toast.addEventListener("click", function (event) {
       crosses_win = false;
       show_toast = false;
   }
+  victories.classList.remove('score-animate');
+  defeats.classList.remove('score-animate');
 });
 
 function fill() {
@@ -430,6 +434,10 @@ function check() {
       overlay.style.display = "block";
       drawn_game = zeros_win = false;
       victories.innerText = ++count_victories;
+      victories.classList.add('score-animate');
+      boxes[lines[i][0]].querySelector('img').classList.add('score-animate');
+      boxes[lines[i][1]].querySelector('img').classList.add('score-animate');
+      boxes[lines[i][2]].querySelector('img').classList.add('score-animate');
       move_permit = true;
       game_over = true;
       setTimeout(() => {
@@ -457,14 +465,14 @@ function check() {
         boxes[lines[i][2]].style.background =
           "#c0fb9d";
 
-      // boxes[lines[i][0]].querySelector("img").style.filter = "invert(1)";
-      // boxes[lines[i][1]].querySelector("img").style.filter = "invert(1)";
-      // boxes[lines[i][2]].querySelector("img").style.filter = "invert(1)";
-
       overlay.style.display = "block";
       drawn_game = crosses_win = false;
       zeros_win = true;
       defeats.innerText = ++count_defeats;
+      defeats.classList.add('score-animate');
+      boxes[lines[i][0]].querySelector('img').classList.add('score-animate');
+      boxes[lines[i][1]].querySelector('img').classList.add('score-animate');
+      boxes[lines[i][2]].querySelector('img').classList.add('score-animate');
       move_permit = true;
       game_over = true;
       return;
