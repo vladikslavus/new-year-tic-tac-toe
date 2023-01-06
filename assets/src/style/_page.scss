@@ -1,6 +1,11 @@
+// X-Small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
 body {
   margin: 0;
   padding: 0;
+}
+* {
+  box-sizing: border-box;
 }
 
 .page {
@@ -10,13 +15,15 @@ body {
 .wrapper {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-wrap: nowrap;
+  justify-content: space-around;
   align-items: center;
   align-content: center;
   width: 100%;
   height: 100vh;
+  padding: 45px 0 45px 0;
   background: url(/img/winter-village.jpg) no-repeat;
+  background-position-x: center;
   background-size: cover;
 }
 
@@ -31,26 +38,24 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 90%;
-  font-family: "Snow for Santa";
-  margin: 0 0 0px 0;
+  width: 98%;
+  margin: 0;
+  // margin-top: 10vh;
+  font-family: "Snow for Santa";  
   font-size: 29px;
   font-weight: 900;
   color: $main_headline;
   letter-spacing: 2px;
   line-height: 30px;
-  text-shadow: 1px 0 20px #fff, 0 1px 20px #fff, -1px 0 20px #fff,
-    0 -1px 20px #fff;
+  text-shadow: 1px 0 20px #fff, 0 1px 20px #fff, -1px 0 20px #fff, 0 -1px 20px #fff;
 
-  > span {
-    display: block;
-
-    &:first-child {
-      transform: scaleY(1.2);
-    }
-    // &:nth-child(2) {
-    //   align-self: flex-end;
-    // }
+  .fist-line {
+    transform: scaleY(1.2);
+  }
+  .second-line {
+    font-size: 18px;
+    font-weight: 200;
+    white-space: nowrap;
 
     > span:first-child {
       font-size: 22px;
@@ -61,11 +66,6 @@ body {
       color: red;
     }
   }
-
-  .words-wrapper {
-    font-size: 18px;
-    font-weight: 200;
-  }
 }
 
 #area {
@@ -73,7 +73,6 @@ body {
   z-index: 1000;
   width: 300px;
   height: 300px;
-  box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
 }
@@ -86,17 +85,12 @@ body {
   height: calc(33.33% - 6px);
   background: #fff;
   margin: 3px;
-  box-sizing: border-box;
   font-size: 50px;
   border: 1px solid #77beec;
   border-radius: 8px;
   background-size: 65%;
   box-shadow: 1px 0 20px #54acd0, 0 1px 20px #54acd0, -1px 0 20px #54acd0,
     0 -1px 20px #54acd0;
-
-  &:hover {
-    cursor: pointer;
-  }
 
   img {
     height: 60px;
@@ -108,8 +102,9 @@ body {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
-  width: 100px;
+  width: 106px;
   height: 50px;
+  margin: 5vh 0 1vh 0;
   font-family: "Arial";
   font-size: 32px;
   font-weight: 900;
@@ -118,7 +113,7 @@ body {
 }
 #victories {
   color: $victories_color;
-  opacity: 0.75;  
+  opacity: 0.75;
 }
 #defeats {
   color: $defeats_color;
@@ -157,7 +152,6 @@ body {
 #toast {
   display: none;
   position: absolute;
-  box-sizing: border-box;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -171,4 +165,69 @@ body {
   z-index: 1200;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
   // transition: visibility 1s ease-out;
+}
+
+
+@media (max-height: 600px) {
+  // .wrapper {
+  //   padding: 0;
+  // }
+  .score {
+    margin: 0;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .score {
+    margin: 6vh 0 1vh 0;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .score {
+    margin: 6vh 0 1vh 0;
+  }
+  .box {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .score {
+    margin: 8vh 0 1vh 0;
+  }
+  .box {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .score {
+    margin: 8vh 0 1vh 0;
+  }
+  .box {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+// XX-Large devices (larger desktops, 1400px and up)
+@media (min-width: 1400px) {
+  .score {
+    margin: 8vh 0 1vh 0;
+  }
+  .box {
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }

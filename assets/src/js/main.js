@@ -1,3 +1,6 @@
+// screen.lockOrientationUniversal = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation;
+// screen.lockOrientationUniversal('portrait');
+
 var toasts = [
   `Пожелаю в Новый год
 Не забыть, кто где живёт,

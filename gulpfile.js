@@ -5,7 +5,7 @@
 /**************************************************/
 
 /* change mode */
-const devMode = true,
+const devMode = false,
     prodMode = !devMode;
 
 /* server settings */
@@ -29,7 +29,7 @@ const path = {
         html: './assets/src/*.html',
         php: './assets/src/**/*.php',
         js: ['./assets/src/js/main.js'], // js entry points, string when one, array when several
-        style: ['./assets/src/style/main.scss'], // scss entry points, string when one, array when several
+        style: './assets/src/style/main.scss', // scss entry points, string when one, array when several
         img: './assets/src/img/**/*.*',
         fonts: './assets/src/fonts/**/*.*',
         icons: './node_modules/@fortawesome/fontawesome-free/webfonts/*'
