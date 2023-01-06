@@ -1,5 +1,4 @@
-// screen.lockOrientationUniversal = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation;
-// screen.lockOrientationUniversal('portrait');
+// Мутим новогодние крестики нолики 2023 :)
 
 var toasts = [
   `Пожелаю в Новый год
@@ -297,8 +296,8 @@ overlay.addEventListener("click", function (event) {
     crosses_win = false;
     show_toast = false;
   }
-  victories.classList.remove('score-animate');
-  defeats.classList.remove('score-animate');
+  victories.classList.remove('heart-beat');
+  defeats.classList.remove('heart-beat');
 });
 toast.addEventListener("click", function (event) {
   if (crosses_win === false && show_toast === false) {
@@ -316,8 +315,8 @@ toast.addEventListener("click", function (event) {
       crosses_win = false;
       show_toast = false;
   }
-  victories.classList.remove('score-animate');
-  defeats.classList.remove('score-animate');
+  victories.classList.remove('heart-beat');
+  defeats.classList.remove('heart-beat');
 });
 
 function fill() {
@@ -437,10 +436,10 @@ function check() {
       overlay.style.display = "block";
       drawn_game = zeros_win = false;
       victories.innerText = ++count_victories;
-      victories.classList.add('score-animate');
-      boxes[lines[i][0]].querySelector('img').classList.add('score-animate');
-      boxes[lines[i][1]].querySelector('img').classList.add('score-animate');
-      boxes[lines[i][2]].querySelector('img').classList.add('score-animate');
+      victories.classList.add('heart-beat');
+      boxes[lines[i][0]].querySelector('img').classList.add('heart-beat');
+      boxes[lines[i][1]].querySelector('img').classList.add('heart-beat');
+      boxes[lines[i][2]].querySelector('img').classList.add('heart-beat');
       move_permit = true;
       game_over = true;
       setTimeout(() => {
@@ -472,10 +471,10 @@ function check() {
       drawn_game = crosses_win = false;
       zeros_win = true;
       defeats.innerText = ++count_defeats;
-      defeats.classList.add('score-animate');
-      boxes[lines[i][0]].querySelector('img').classList.add('score-animate');
-      boxes[lines[i][1]].querySelector('img').classList.add('score-animate');
-      boxes[lines[i][2]].querySelector('img').classList.add('score-animate');
+      defeats.classList.add('heart-beat');
+      boxes[lines[i][0]].querySelector('img').classList.add('heart-beat');
+      boxes[lines[i][1]].querySelector('img').classList.add('heart-beat');
+      boxes[lines[i][2]].querySelector('img').classList.add('heart-beat');
       move_permit = true;
       game_over = true;
       return;
@@ -483,7 +482,10 @@ function check() {
   }
   // if (return_empty_boxes().length === 0 && crosses_win === false && zeros_win === false) {
   if (return_empty_boxes().length === 0) {
-    // alert ('Ничья!');
+    // console.log('Ничья!');
+    [...boxes].forEach(box => {
+      box.querySelector('img').classList.add('heart-beat');
+    })
     overlay.style.display = "block";
     crosses_win = zeros_win = false;
     move_permit = true;

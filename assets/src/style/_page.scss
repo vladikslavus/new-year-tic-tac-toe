@@ -118,7 +118,7 @@ body {
 #defeats {
   color: $defeats_color;
 }
-.score-animate {
+.heart-beat {
   animation: heartBeat 1.3s ease-in-out;
 }
 @keyframes heartBeat {
