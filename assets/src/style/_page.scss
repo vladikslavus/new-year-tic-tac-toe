@@ -41,13 +41,14 @@ body {
   width: 98%;
   margin: 0;
   // margin-top: 10vh;
-  font-family: "Snow for Santa";  
+  font-family: "Snow for Santa";
   font-size: 29px;
   font-weight: 900;
   color: $main_headline;
   letter-spacing: 2px;
   line-height: 30px;
-  text-shadow: 1px 0 20px #fff, 0 1px 20px #fff, -1px 0 20px #fff, 0 -1px 20px #fff;
+  text-shadow: 1px 0 20px #fff, 0 1px 20px #fff, -1px 0 20px #fff,
+    0 -1px 20px #fff;
 
   .fist-line {
     transform: scaleY(1.2);
@@ -151,27 +152,33 @@ body {
 
 #toast {
   display: none;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 310px;
-  min-height: 495px;
+  min-height: 100px;
   padding: 15px 15px 15px 25px;
   font-size: 16px;
   background: #fff;
   background: linear-gradient(-25deg, #fefcea 40%, #77beec);
+  border: 2px solid rgba(255,255,255,0.5);
   border-radius: 10px;
   z-index: 1200;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
   // transition: visibility 1s ease-out;
+
+  .toast-img {
+    height: 50px;
+    width: auto;
+    margin: 20px 0 5px 0;
+  }
 }
 
-
 @media (max-height: 600px) {
-  // .wrapper {
-  //   padding: 0;
-  // }
   .score {
     margin: 0;
   }
