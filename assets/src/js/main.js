@@ -1,6 +1,6 @@
 // Мутим новогодние крестики нолики 2023 :)
 
-var toasts = [
+const toasts = [
   `<p>Пожелаю в Новый год<br>
 Не забыть, кто где живёт,<br>
 Помнить собственное имя<br>
@@ -232,30 +232,30 @@ var toasts = [
 И вообще во всём везёт!</p>`,
 ];
 
-var area = document.getElementById("area"),
-  boxes = document.getElementsByClassName("box"),
-  overlay = document.getElementById("overlay"),
-  toast = document.getElementById("toast"),
-  victories = document.getElementById("victories"),
-  defeats = document.getElementById("defeats"),
-  count_victories = (count_defeats = 0),
-  toast_text = document.querySelector(".toast-text"),
-  lines = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ],
-  crosses_win = (zeros_win = drawn_game = game_over = show_toast = false),
-  move_permit = true;
+const area = document.getElementById("area"),
+      boxes = document.getElementsByClassName("box"),
+      overlay = document.getElementById("overlay"),
+      toast = document.getElementById("toast"),
+      victories = document.getElementById("victories"),
+      defeats = document.getElementById("defeats"),  
+      toast_text = document.querySelector(".toast-text"),
+      lines = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+      ];
+  let count_victories = count_defeats = 0,
+      crosses_win = zeros_win = drawn_game = game_over = show_toast = false,
+      move_permit = true;
 
 area.addEventListener("click", function (event) {
   if (event.target.tagName === "IMG") return;
-  var box = event.target;
+  const box = event.target;
 
   if (box.innerHTML === "" && move_permit === true) {
     box.innerHTML = '<img src="/img/santa.svg" alt="">';
@@ -325,7 +325,7 @@ function fill() {
   if (return_empty_boxes().length > 0) {
     // смотрим присутствует ли в линии два нуля, и, если присутствуют,
     // то закрываем линию, прерываем выполнение функции и выигрываем партию
-    for (var i = 0; i < lines.length; i++) {
+    for (let i = 0; i < lines.length; i++) {
       if (
         boxes[lines[i][0]].innerHTML ===
           '<img src="/img/christmas-tree.svg" alt="">' &&
@@ -365,7 +365,7 @@ function fill() {
     }
     // проходимся по массиву линий и, если в первой попавшейся линии есть два икса,
     // заполняем пустой бокс нулём и прерываем выполнение функции
-    for (var i = 0; i < lines.length; i++) {
+    for (let i = 0; i < lines.length; i++) {
       if (
         boxes[lines[i][0]].innerHTML === '<img src="/img/santa.svg" alt="">' &&
         boxes[lines[i][1]].innerHTML === '<img src="/img/santa.svg" alt="">' &&
@@ -397,8 +397,8 @@ function fill() {
         return;
       }
     }
-    var empty_boxes = return_empty_boxes();
-    var rand = empty_boxes[Math.floor(Math.random() * empty_boxes.length)];
+    const empty_boxes = return_empty_boxes();
+    const rand = empty_boxes[Math.floor(Math.random() * empty_boxes.length)];
     boxes[rand].innerHTML = '<img src="/img/christmas-tree.svg" alt="">';
     // boxes[rand].style.color = 'brown';
     move_permit = true;
@@ -407,15 +407,15 @@ function fill() {
 }
 
 function return_empty_boxes() {
-  var empty_boxes = [];
-  for (var i = 0; i < boxes.length; i++) {
+  const empty_boxes = [];
+  for (let i = 0; i < boxes.length; i++) {
     if (boxes[i].innerHTML == "") empty_boxes.push(i);
   }
   return empty_boxes;
 }
 
 function clear_area() {
-  for (var i = 0; i < boxes.length; i++) {
+  for (let i = 0; i < boxes.length; i++) {
     boxes[i].innerHTML = "";
     boxes[i].style.backgroundColor = "#fff";
   }
@@ -424,7 +424,7 @@ function clear_area() {
 }
 
 function check() {
-  for (var i = 0; i < lines.length; i++) {
+  for (let i = 0; i < lines.length; i++) {
     if (
       boxes[lines[i][0]].innerHTML === '<img src="/img/santa.svg" alt="">' &&
       boxes[lines[i][1]].innerHTML === '<img src="/img/santa.svg" alt="">' &&
