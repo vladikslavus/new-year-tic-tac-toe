@@ -151,7 +151,9 @@ body {
 }
 
 #toast {
-  display: none;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
@@ -169,7 +171,12 @@ body {
   border-radius: 10px;
   z-index: 1200;
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
-  // transition: visibility 1s ease-out;
+  transition: all .3s ease-in-out;
+
+  &.show-toast {
+    visibility: visible;
+    opacity: 1;
+  }
 
   .toast-img {
     height: 50px;

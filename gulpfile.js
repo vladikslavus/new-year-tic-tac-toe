@@ -5,7 +5,7 @@
 /**************************************************/
 
 /* change mode */
-const devMode = false,
+const devMode = true,
     prodMode = !devMode;
 
 /* server settings */

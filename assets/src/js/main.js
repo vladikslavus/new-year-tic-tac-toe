@@ -288,12 +288,11 @@ overlay.addEventListener("click", function (event) {
       img.style.filter = "invert(0)";
     });
     overlay.style.display = "none";
-    toast.style.display = "none";
     clear_area();
   }
   if (crosses_win === true && show_toast === true) {
     overlay.style.display = "none";
-    toast.style.display = "none";
+    toast.classList.remove('show-toast');
     clear_area();
     crosses_win = false;
     show_toast = false;
@@ -307,12 +306,12 @@ toast.addEventListener("click", function (event) {
     document.querySelectorAll(".box img").forEach((img) => {
       img.style.filter = "invert(0)";
     });
-    toast.style.display = "none";
     overlay.style.display = "none";
     clear_area();
   }
   if (crosses_win === true && show_toast === true) {
-      toast.style.display = "none";
+
+      toast.classList.remove('show-toast');
       overlay.style.display = "none";
       clear_area();
       crosses_win = false;
@@ -447,8 +446,9 @@ function check() {
       game_over = true;
       setTimeout(() => {
         overlay.style.opacity = "0.6";
-        toast.style.display = "flex";
+        // toast.style.display = "flex";        
         toast_text.innerHTML = toasts[Math.floor(Math.random() * toasts.length)];
+        toast.classList.add('show-toast');
         show_toast = true;
         crosses_win = true;
       }, 1000);
