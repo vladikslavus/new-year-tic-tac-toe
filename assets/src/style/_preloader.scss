@@ -1,0 +1,83 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+.preloader {
+  position: fixed;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+}
+.preloader__img {
+  height: 3.75rem;
+  width: auto;
+}
+.preloader__fil2 {
+  fill: #3e721d;
+}
+.preloader__fil1 {
+  fill: #5c913b;
+}
+.preloader__fil0 {
+  fill: #662113;
+}
+.preloader__fil6 {
+  fill: #a6d388;
+  animation: flash 0.3s ease alternate infinite;
+  animation-delay: 0.6s;
+}
+.preloader__fil5 {
+  fill: #dd2e44;
+  animation: flash 0.3s ease alternate infinite;
+}
+.preloader__fil3 {
+  fill: #ffac33;
+  /* animation: flash 1s ease alternate infinite;
+        animation-delay: 1s; */
+}
+.preloader__fil4 {
+  fill: #ffcc4d;
+  animation: flash 0.3s ease alternate infinite;
+  animation-delay: 0.3s;
+}
+@keyframes flash {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+.preloader-text {
+  width: 4rem;
+}
+.preloader-text:after {
+  content: "Загрузка";
+  animation-name: loading-text;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+@keyframes loading-text {
+  0% {
+    content: "Загрузка";
+  }
+
+  25% {
+    content: "Загрузка.";
+  }
+
+  50% {
+    content: "Загрузка..";
+  }
+
+  75% {
+    content: "Загрузка...";
+  }
+}

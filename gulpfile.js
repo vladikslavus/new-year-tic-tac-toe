@@ -5,7 +5,7 @@
 /**************************************************/
 
 /* change mode */
-const devMode = true,
+const devMode = false,
     prodMode = !devMode;
 
 /* server settings */
@@ -98,20 +98,21 @@ function php_build() {
 
 // style build
 function css_build () {
-    return gulp.src(path.src.style) // pass the string or the array of values pointed above if we want to pass several ones 
-        .pipe(plumber()) // gulp plugins bug tracking
-        .pipe(gulpif(devMode, sourcemaps.init())) // initialize source maps
-        .pipe(sass()) // scss -> css
-        .pipe(autoprefixer({ // add vendor prefixes to CSS
-            overrideBrowserslist:  ['last 2 versions'], // last two versions recommended by plugin developers
-            cascade: false
-        }))
-        .pipe(gulp.dest(path.build.css)) // deploy temporary css
-        .pipe(rename({ suffix: '.min' })) // add prefixes to the deployed file
-        .pipe(cleanCSS({level: {1: {specialComments: 0}}})) // minify CSS and disable even special comments
-        .pipe(gulpif(devMode, sourcemaps.write('./')))  // write source maps
-        .pipe(gulp.dest(path.build.css)) // deploy final css
-        .pipe(browserSync.reload({ stream: true })); // browser-sync reload
+  return gulp.src(path.src.style) // pass the string or the array of values pointed above if we want to pass several ones
+      // .pipe(cached('css_building'))
+      .pipe(plumber()) // gulp plugins bug tracking
+      .pipe(gulpif(devMode, sourcemaps.init())) // initialize source maps
+      .pipe(sass()) // scss -> css
+      .pipe(autoprefixer({ // add vendor prefixes to CSS
+          overrideBrowserslist:  ['last 2 versions'], // last two versions recommended by plugin developers
+          cascade: false
+      }))
+      .pipe(gulp.dest(path.build.css)) // deploy temporary css
+      .pipe(rename({ suffix: '.min' })) // add prefixes to the deployed file
+      .pipe(cleanCSS({level: {1: {specialComments: 0}}})) // minify CSS and disable even special comments
+      .pipe(gulpif(devMode, sourcemaps.write('./')))  // write source maps
+      .pipe(gulp.dest(path.build.css)) // deploy final css
+      .pipe(browserSync.reload({ stream: true })); // browser-sync reload
 }
 
 function js_build() {

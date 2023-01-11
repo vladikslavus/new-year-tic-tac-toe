@@ -1,0 +1,7 @@
+# .gitignore
+/.archive/
+.vscode/
+package-lock.json
+/node_modules/
+/assets/build/
+/assets/resources/

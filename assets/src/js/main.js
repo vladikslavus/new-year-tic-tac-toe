@@ -1,5 +1,7 @@
 // Мутим новогодние крестики нолики 2023 :)
 
+import './preloader.js';
+
 const toasts = [
   `<p>Пожелаю в Новый год<br>
 Не забыть, кто где живёт,<br>
@@ -249,9 +251,14 @@ const area = document.getElementById("area"),
         [0, 4, 8],
         [2, 4, 6],
       ];
-  let count_victories = count_defeats = 0,
-      crosses_win = zeros_win = drawn_game = game_over = show_toast = false,
-      move_permit = true;
+  let count_victories = 0;
+  let count_defeats = 0;
+  let crosses_win = false;
+  let zeros_win = false;
+  let drawn_game = false;
+  let game_over = false;
+  let show_toast = false;
+  let move_permit = true;
 
 area.addEventListener("click", function (event) {
   if (event.target.tagName === "IMG") return;
