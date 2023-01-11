@@ -2,6 +2,10 @@
 
 import './preloader.js';
 
+// implement wow.js library to trigger animate.css
+import WOW from 'wow.js';
+new WOW().init();
+
 const toasts = [
   `<p>Пожелаю в Новый год<br>
 Не забыть, кто где живёт,<br>
