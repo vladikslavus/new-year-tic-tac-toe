@@ -23,7 +23,8 @@ const path = {
         css: './assets/build/css/',
         img: './assets/build/img/',
         fonts: './assets/build/fonts/',
-        icons: './assets/build/fonts/fa/'
+        icons: './assets/build/fonts/fa/',
+        rest: './assets/build/'
     },
     src: {
         html: './assets/src/*.html',
@@ -32,7 +33,8 @@ const path = {
         style: './assets/src/style/main.scss', // scss entry points, string when one, array when several
         img: './assets/src/img/**/*.*',
         fonts: './assets/src/fonts/**/*.*',
-        icons: './node_modules/@fortawesome/fontawesome-free/webfonts/*'
+        icons: './node_modules/@fortawesome/fontawesome-free/webfonts/*',
+        rest: ['./assets/src/.htaccess']
     },
     watch: {
         html: './assets/src/**/*.html',
@@ -107,7 +109,8 @@ function css_build () {
           overrideBrowserslist:  ['last 2 versions'], // last two versions recommended by plugin developers
           cascade: false
       }))
-      .pipe(gulp.dest(path.build.css)) // deploy temporary css
+      // .pipe(gulp.dest(path.build.css)) // deploy temporary css
+      .pipe(gulpif(devMode, gulp.dest(path.build.css))) // deploy this file only for devMode
       .pipe(rename({ suffix: '.min' })) // add prefixes to the deployed file
       .pipe(cleanCSS({level: {1: {specialComments: 0}}})) // minify CSS and disable even special comments
       .pipe(gulpif(devMode, sourcemaps.write('./')))  // write source maps
@@ -156,7 +159,8 @@ function js_build() {
         .pipe(webpackStream(webpackConf)).on('error', function handleError() {
             this.emit('end')
         })
-        .pipe(gulp.dest(path.build.js))  // build js
+        // .pipe(gulp.dest(path.build.js))  // build js
+        .pipe(gulpif(devMode, gulp.dest(path.build.js))) // deploy this file only for devMode
         .pipe(rename({ suffix: '.min' })) // add suffix to the filename
         .pipe(gulp.dest(path.build.js)) // build final min js
         .pipe(browserSync.reload({ stream: true })); // browser-sync reload
@@ -191,6 +195,13 @@ function image_build() {
         .pipe(gulp.dest(path.build.img)); // unload final resulting images
 }
 
+// rest files in Array
+function rest_build() {
+  return gulp.src(path.src.rest) // get rest files in Array
+      .pipe(gulp.dest(path.build.rest)) // build rest files
+      .pipe(browserSync.reload({ stream: true })); // browser-sync reload
+}
+
 // clean build folder
 function clean_build() {
     return del('path.clean', { force: true });
@@ -208,7 +219,8 @@ function build(done) {
             php_build,
             fonts_build,
             icons_build,
-            image_build
+            image_build,
+            rest_build
         )
     )(done);
     // );
@@ -233,6 +245,7 @@ exports.js_build = js_build;
 exports.fonts_build = fonts_build;
 exports.icons_build = icons_build;
 exports.image_build = image_build;
+exports.rest_build = rest_build;
 exports.build = build;
 
 // default task
